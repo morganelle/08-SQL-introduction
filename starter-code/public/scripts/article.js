@@ -127,14 +127,14 @@ Article.truncateTable = function(callback) {
 // TODO
 /**
  * OVERVIEW of
- * - Describe what the method does
- * - Inputs: identify any inputs and their source
- * - Outputs: identify any outputs and their destination
+ * - Adds a record to our database
+ * - Inputs: optional callback, properties from Article instance
+ * - Outputs: console.log of data inserted
  */
 Article.prototype.insertRecord = function(callback) {
-  // TODO: describe what the following code is doing
+  // TODO: sends an instance of an article object to our articles route for storage in the database
   $.post('/articles', {author: this.author, authorUrl: this.authorUrl, body: this.body, category: this.category, publishedOn: this.publishedOn, title: this.title})
-  // TODO: describe what the following code is doing
+  // TODO: once a response to the AJAX call is received, the callback function with an argument of data returned from the call runs. The data is logged, and if a callback was passed in as an argument, it will run.
   .then(function(data) {
     console.log(data);
     if (callback) callback();
@@ -146,17 +146,17 @@ Article.prototype.insertRecord = function(callback) {
 // TODO
 /**
  * OVERVIEW of
- * - Describe what the method does
- * - Inputs: identify any inputs and their source
- * - Outputs: identify any outputs and their destination
+ * - Describe what the method does: This method on the Article proto makes an AJAX HTTP request on an article of a particular ID and deletes it. After the AJAX call completes, the data that was deleted is logged, and if a callback function has been passed as an argument, it will run.
+ * - Inputs: identify any inputs and their source: callback function argument, the id of the instance of article
+ * - Outputs: identify any outputs and their destination: console.log of data, result of callback function, an updated database
  */
 Article.prototype.deleteRecord = function(callback) {
-  // TODO: describe what the following code is doing
+  // TODO: Makes an HTTP request using jQuery ajax call accessing the articles ID from the article instance this method is called on. The request is with an HTTP request method of Delete. Performs a delete operation on the instance of Article in the database.
   $.ajax({
     url: `/articles/${this.article_id}`,
     method: 'DELETE'
   })
-  // TODO: describe what the following code is doing
+  // TODO: After the AJAX call has finished, the .then method is called an argument of an anonymous callback function which has an argument of data. The function first logs the data property from the HTTP request, which will be the data that was deleted. Then, if a callback function was passed as an argument of the .deleteRecord, it will be called.
   .then(function(data) {
     console.log(data);
     if (callback) callback();
@@ -167,17 +167,17 @@ Article.prototype.deleteRecord = function(callback) {
 
 // TODO
 /**
- * OVERVIEW of
- * - Describe what the method does
- * - Inputs: identify any inputs and their source
- * - Outputs: identify any outputs and their destination
- */
+* OVERVIEW of Article.prototype.updateRecord
+* - Describe what the method does: This method attaches a prototype of updateRecord to Article.  It uses AJAX to get a particular article id and puts the data listed into the table and if a callback function has been passed as an argument, it will run.
+* - Inputs: article id and the data from the Article function
+* - Outputs: the data added to the table, console.log of data returned from AJAX call
+*/
 Article.prototype.updateRecord = function(callback) {
-  // TODO: describe what the following code is doing
+  // TODO: AJAX call accessing at the particular articles id and updating the data listed below into the table
   $.ajax({
     url: `/articles/${this.article_id}`,
     method: 'PUT',
-    data: {  // TODO: describe what this object is doing
+    data: {  // TODO: this is giving the properties of the instance to be updated in the table
       author: this.author,
       authorUrl: this.authorUrl,
       body: this.body,
@@ -186,7 +186,7 @@ Article.prototype.updateRecord = function(callback) {
       title: this.title
     }
   })
-  // TODO: describe what the following code is doing
+  // TODO: This is indicating that after the above is inputted into the table then log the data added and if the callback function is there, run the callback function
   .then(function(data) {
     console.log(data);
     if (callback) callback();

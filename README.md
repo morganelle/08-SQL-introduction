@@ -50,3 +50,10 @@ Meets all Assignment Reqs | 6
 Uses idiomatic code style | 3
 Follows proper Git workflow | 1
 **Total** | **10**
+
+## Collaborators  
+Brandon Little - article.js
+Elyanil Castro - article.js
+Eve Denison - article.js
+
+---
