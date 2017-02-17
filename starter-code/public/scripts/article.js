@@ -44,8 +44,8 @@ Article.prototype.toHtml = function() {
 /**
  * OVERVIEW of Article.loadAll
  * - Describe what the method does: At a high level, this method takes an array as an argument and sorts the array items (which are objects) by date. Then, once the array is sorted, it instantiates a new Article object and pushes that object into the Article.all array that was declared on line 12.
- * - Inputs: identify any inputs and their source: Article.loadAll takes an argument that is an array.
- * - Outputs: identify any outputs and their destination: items in Articles.all that are new Article instances, sorted by date.
+ * - Inputs: Article.loadAll takes an argument that is an array.
+ * - Outputs: items in Articles.all that are new Article instances, sorted by date.
  */
 Article.loadAll = function(rows) {
   // DONE: Takes the argument of "rows" from its parent function (Article.loadAll) and calls an array method of sort, which takes a function as an argument. The function takes two parameters, a and b, which are array items that have the property PublishedOn. It instantiates a new Date object using the string held by publishedOn for both index items, returns the difference between the one array item and the next one and orders the array items based on that difference.
@@ -105,7 +105,7 @@ Article.fetchAll = function(callback) {
 // DONE
 /**
  * OVERVIEW of Article.truncateTable
- * - Describe what the method does: Makes a jQuery AJAX call to the articles route with a delete method. Once the call has been returned, a log of the data returned and a callback function executes (if it exists).
+ * - Describe what the method does: Makes a jQuery AJAX call to the articles route with a SQL delete method. Once the call has been returned, a log of the data returned and a callback function executes (if it exists).
  * - Inputs: optional callback function
  * - Outputs: Outputs a log of table data that has been truncated
  */
@@ -113,7 +113,7 @@ Article.truncateTable = function(callback) {
   // DONE: describe what the following code is doing: jQuery AJAX selector that gets route of /articles and tells it to delete what has been selected.
   $.ajax({
     url: '/articles',
-    method: 'DELETE',
+    method: 'DELETE', // HTTP method
   })
   // DONE: once a response to the AJAX call is received, an anonymous callback function with an argument of data returned from the call runs. The data is logged, and if a callback was passed in as an argument, it will run.
   .then(function(data) {
